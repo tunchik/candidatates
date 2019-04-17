@@ -1,33 +1,47 @@
 import React from 'react';
 import Dropdown from "react-bootstrap/Dropdown";
-import {List, ListItem, Avatar} from "@material-ui/core";
+import {ListItem, Avatar} from "@material-ui/core";
 
 
 
-const CandidateListItems = ({ name , age, country}) => {
+export default class CandidateListItems extends React.Component{
 
 
+    state={
+        edit:false
+    };
 
+    changeEdit=()=>{
+        this.setState(({edit})=>{
+            return{
+                edit:!false
+            }
+        })
+    };
+
+    render(){
+        const { name , age, country} = this.props;
         return(
-            <List className={"d-flex justify-content:center"}>
-             <ListItem>
+            <React.Fragment>
+             <ListItem className="col-2">
               <Avatar>
              </Avatar>
             </ListItem>
-                <ListItem>{ name }</ListItem>
-                <ListItem>{ age }</ListItem>
-                    <ListItem>{ country }</ListItem>
-                    <ListItem>
-                        <Dropdown >
-                                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                </Dropdown.Toggle>
+            <ListItem className="col-2">{ name }</ListItem>
+            <ListItem className="col-2">{ age }</ListItem>
+            <ListItem className="col-2">{ country }</ListItem>
+            <ListItem className="col-2">
+                <Dropdown >
+                        <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1" onClick={this.changeEdit}>Edit</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Delete</Dropdown.Item>
+                        </Dropdown.Menu>
+                </Dropdown>
+            </ListItem>
+            </React.Fragment>
+        );
+    };
+}
 
-                                <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Edit</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Delete</Dropdown.Item>
-                                </Dropdown.Menu>
-                        </Dropdown>
-                    </ListItem>
-            </List>)
-};
-export default CandidateListItems;

@@ -1,15 +1,20 @@
 import React from 'react';
-import CandidateList from './CandidateList'
-import Button from "react-bootstrap/es/Button";
+import CandidateList from './CandidateList';
+import CandidatesForm from "./Form";
+import Data from "../data";
 
 class Main extends React.Component{
+
+    state = {
+        data:Data
+};
+
     render() {
+
         return(
-            <div >
-                <CandidateList/>
-                <Button className={"item-align:center"}>
-                    Add
-                </Button>
+            <div className="d-flex flex-column align-items-center">
+                <CandidateList data={this.state.data} className="d-flex"/>
+                <CandidatesForm />
             </div>
         )
     }
