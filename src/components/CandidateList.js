@@ -2,6 +2,7 @@ import React from 'react';
 import {ListGroup} from 'react-bootstrap'
 import CandidateListItems from './CandidateListItems';
 import Col from "react-bootstrap/Col";
+import {connect }from "react-redux";
 
 
 
@@ -11,7 +12,7 @@ const CandidateList = ( {data} ) => {
         const {id,...itemProps} = item;
         return(
             <ListGroup as={Col} key={id} className="d-flex justify-content-between mt-5">
-                    <ListGroup.Item  className="d-flex mr-2 justify-content-between col-11" >
+                    <ListGroup.Item  className="d-flex mr-2 justify-content-between col-11с" >
                         <CandidateListItems {...itemProps} className="d-flex"/>
                     </ListGroup.Item>
             </ListGroup>
@@ -25,4 +26,4 @@ const CandidateList = ( {data} ) => {
     );
 };
 
-export default CandidateList;
+export default connect()(CandidateList);
